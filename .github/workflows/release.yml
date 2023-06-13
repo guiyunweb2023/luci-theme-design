@@ -50,14 +50,7 @@ jobs:
 
       - name: Upload to release
         uses: actions/upload-artifact@v3
-        if: steps.build.outputs.status == 'success' && !cancelled()
-        env:
-          GITHUB_TOKEN: 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
         with:
-          name: ${{ steps.tag.outputs.tag }}
-          tag_name: ${{ steps.tag.outputs.tag }}
-          prerelease: false
-          generate_release_notes: true
-          files: |
-            ${{ steps.build.outputs.TARGET }}
-            LICENSE
+          name: code-coverage-report
+          path: luci-theme-design/openwrt-sdk/bin/packages/x86_64/base/luci-theme-design_6.0-20230224_all.ipk
+
